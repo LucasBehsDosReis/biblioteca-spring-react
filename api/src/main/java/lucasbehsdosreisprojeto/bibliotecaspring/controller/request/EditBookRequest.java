@@ -12,7 +12,4 @@ public class EditBookRequest {
 
     @NotBlank
     private String title;
-
-    @NotNull
-    private Status status;
 }
