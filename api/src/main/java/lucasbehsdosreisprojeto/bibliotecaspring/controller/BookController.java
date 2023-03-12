@@ -44,7 +44,7 @@ public class BookController {
         return editBookService.editBook(bookId, request);
     }
 
-    @DeleteMapping("/{bookId}")
+    @DeleteMapping("/{bookId}/delete")
     @ResponseStatus(NO_CONTENT)
     public void deleteBook(@PathVariable Long bookId) {
         deleteBookService.deleteBook(bookId);
