@@ -8,7 +8,10 @@ import lucasbehsdosreisprojeto.bibliotecaspring.controller.response.DetailBookRe
 import lucasbehsdosreisprojeto.bibliotecaspring.service.DeleteBookService;
 import lucasbehsdosreisprojeto.bibliotecaspring.service.EditBookService;
 import lucasbehsdosreisprojeto.bibliotecaspring.service.IncludeBookService;
+import lucasbehsdosreisprojeto.bibliotecaspring.service.ListBookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.http.HttpStatus.CREATED;
@@ -23,7 +26,12 @@ public class BookController {
 
     @Autowired
     private EditBookService editBookService;
+
+    @Autowired
     private DeleteBookService deleteBookService;
+
+    @Autowired
+    private ListBookService listBookService;
 
     @PostMapping
     @ResponseStatus(CREATED)
@@ -40,5 +48,10 @@ public class BookController {
     @ResponseStatus(NO_CONTENT)
     public void deleteBook(@PathVariable Long bookId) {
         deleteBookService.deleteBook(bookId);
+    }
+
+    @GetMapping
+    public Page<BookResponse> listBookPageable(Pageable pageable) {
+        return listBookService.listBookPageable(pageable);
     }
 }
