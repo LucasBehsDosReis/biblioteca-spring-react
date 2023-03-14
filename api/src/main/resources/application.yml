@@ -1,3 +1,6 @@
+api:
+  devolution:
+    days: 5
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/seguranca
