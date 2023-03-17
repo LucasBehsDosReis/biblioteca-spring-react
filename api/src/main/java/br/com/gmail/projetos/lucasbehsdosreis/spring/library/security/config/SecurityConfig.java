@@ -2,9 +2,8 @@ package br.com.gmail.projetos.lucasbehsdosreis.spring.library.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -15,8 +14,7 @@ import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 @Configuration
-@EnableWebSecurity
-@EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfig {
 
     @Bean
@@ -31,13 +29,13 @@ public class SecurityConfig {
                 .cors()
 
                 .and()
-                .authorizeHttpRequests()
-                .requestMatchers("/*/**/public").permitAll()
-                .requestMatchers(POST, "/users").permitAll()
-                .requestMatchers(GET, "/books").permitAll()
+                .authorizeRequests()
+                .antMatchers("/*/**/public").permitAll()
+                .antMatchers(POST, "/users").permitAll()
+                .antMatchers(GET, "/books").permitAll()
 
                 .and()
-                .authorizeHttpRequests()
+                .authorizeRequests()
                 .anyRequest().authenticated()
 
                 .and()

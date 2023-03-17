@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
+
 import static br.com.gmail.projetos.lucasbehsdosreis.spring.library.mapper.DetailBookMapper.toResponse;
 import static java.util.Objects.nonNull;
 import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
@@ -42,8 +44,10 @@ public class RendBookService {
 
         User user = userAuthenticationService.get();
 
+        LocalDate devolutionDate = bookReturnCalculationService.calculateReturn();
+
         book.setResponsible(user);
-        book.setDevolutionDate(bookReturnCalculationService.calculateReturn());
+        book.setDevolutionDate(devolutionDate);
 
         bookRepository.save(book);
 
