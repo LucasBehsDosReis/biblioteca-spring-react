@@ -26,7 +26,7 @@ public class ReturnBookService {
         Book book = findBookService.byId(bookId);
 
         if (isNull(book.getResponsible())) {
-            throw new ResponseStatusException(UNPROCESSABLE_ENTITY, "The book is not available!");
+            throw new ResponseStatusException(UNPROCESSABLE_ENTITY, "The book has not been rented!");
         }
 
         book.setResponsible(null);

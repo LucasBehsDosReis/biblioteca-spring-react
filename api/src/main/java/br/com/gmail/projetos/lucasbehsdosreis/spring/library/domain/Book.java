@@ -1,13 +1,13 @@
 package br.com.gmail.projetos.lucasbehsdosreis.spring.library.domain;
 
 import br.com.gmail.projetos.lucasbehsdosreis.spring.library.security.domain.User;
-import jakarta.persistence.*;
 import lombok.*;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
-import static jakarta.persistence.EnumType.STRING;
-import static jakarta.persistence.GenerationType.IDENTITY;
+import static javax.persistence.EnumType.STRING;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Builder

@@ -1,27 +1,27 @@
-package br.com.gmail.projetos.lucasbehsdosreis.spring.library.service.core;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package br.com.gmail.projetos.lucasbehsdosreis.spring.library.factories;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
 
 import static java.time.DayOfWeek.SATURDAY;
 import static java.time.DayOfWeek.SUNDAY;
 import static java.util.List.of;
 
-@Service
-public class BookReturnCalculationService {
-
-    @Autowired
-    private NowService nowService;
+public class SimpleFactory {
 
     private static final List<DayOfWeek> INVALID_DAYS = of(SATURDAY, SUNDAY);
 
-    public LocalDate calculateReturn() {
+    public static Long getRandomLong() {
+        return new Random().nextLong();
+    }
 
-        LocalDate today = nowService.getDate();
+    public static LocalDate getNowDate() {
+        return LocalDate.now();
+    }
+
+    public static LocalDate getDevolutionDate(LocalDate today) {
 
         LocalDate devolutionDate = today.plusDays(5);
 
