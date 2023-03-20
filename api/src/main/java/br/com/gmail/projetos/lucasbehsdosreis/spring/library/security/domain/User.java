@@ -11,10 +11,10 @@ import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-
 @Entity
 @Getter
 @Setter
+@Table(name = "account")
 @EqualsAndHashCode(of = "id") @ToString(of = "id")
 public class User {
 
@@ -22,13 +22,13 @@ public class User {
     @GeneratedValue(strategy = IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "account_name")
     private String userName;
 
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "account_password")
     private String userPassword;
 
     @Column(nullable = false)

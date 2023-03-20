@@ -1,6 +1,5 @@
 package br.com.gmail.projetos.lucasbehsdosreis.spring.library.security.domain;
 
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +24,6 @@ public class Permission {
     private Function function;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "account_id")
     private User user;
 }
