@@ -15,8 +15,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "id")
-@ToString(of = "id")
+@EqualsAndHashCode(of = "id") @ToString(of = "id")
 public class Book {
 
     @Id
@@ -35,6 +34,6 @@ public class Book {
     private LocalDate devolutionDate;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "account_id")
     private User responsible;
 }
